@@ -1,0 +1,19 @@
+services:
+  mysql:
+    image: mysql:8.0.40
+    volumes:
+      - ./docker/mysql/mysql_data:/var/lib/mysql
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    env_file:
+      - ./docker/mysql/mysql-variables.env
+
+  app:
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    ports:
+      - "50080:80"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - mysql
