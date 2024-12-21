@@ -6,7 +6,6 @@ use PHPUnit\Framework\TestCase;
 use WikiLogs\LogAnalyses;
 use Dotenv;
 use PDO;
-use PDOStatement;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 require_once(__DIR__ . '/../lib/LogAnalyses.php');

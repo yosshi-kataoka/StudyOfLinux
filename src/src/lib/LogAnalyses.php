@@ -5,8 +5,14 @@ namespace WikiLogs;
 use PDO;
 use PDOException;
 use Dotenv;
+use WikiLogs\Processor;
+use WikiLogs\ViewCountProcessor;
+use WikiLogs\DomainViewProcessor;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/Processor.php';
+require_once __DIR__ . '/ViewCountProcessor.php';
+require_once __DIR__ . '/DomainViewProcessor.php';
 
 class LogAnalyses
 {
@@ -20,9 +26,11 @@ class LogAnalyses
       return null;
     }
     $this->displayStartMessage();
-    $result = $this->selectNumber();
+    $selectNumber = $this->selectNumber();
     // 選択された番号に応じて処理を分岐
-    return $result;
+    $processor = $this->getProcessor($selectNumber);
+    $this->execute($processor, $pdo);
+    return 1;
   }
 
   public function connectDb()
@@ -66,12 +74,27 @@ class LogAnalyses
     return true;
   }
 
-
   private function isOneOrTwo(int $input): bool
   {
     if ($input === 1 || $input === 2) {
       return true;
     }
     return false;
+  }
+
+  // 入力値に応じて異なる表示処理を行うProcessorクラスをそれぞれ生成
+  private function getProcessor(int $selectNumber): Processor
+  {
+    switch ($selectNumber) {
+      case 1:
+        return new ViewCountProcessor();
+      case 2:
+        return new DomainViewProcessor();
+    }
+  }
+
+  private function execute(Processor $processor, PDO $pdo): void
+  {
+    $processor->execute($pdo);
   }
 }
