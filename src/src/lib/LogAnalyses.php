@@ -16,7 +16,7 @@ require_once __DIR__ . '/DomainViewProcessor.php';
 
 class LogAnalyses
 {
-  public function start()
+  public function start(): bool
   {
     try {
       $pdo = $this->connectDb();
@@ -30,10 +30,10 @@ class LogAnalyses
     // 選択された番号に応じて処理を分岐
     $processor = $this->getProcessor($selectNumber);
     $this->execute($processor, $pdo);
-    return 1;
+    return true;
   }
 
-  public function connectDb()
+  protected function connectDb(): PDO
   {
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
     $dotenv->load();
