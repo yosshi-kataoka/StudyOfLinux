@@ -2,9 +2,9 @@
 
 namespace WikiLogs;
 
-use WikiLogs\LogAnalyses;
+use WikiLogs\LogAnalysis;
 
-require_once(__DIR__ . '/LogAnalyses.php');
+require_once(__DIR__ . '/LogAnalysis.php');
 
-$logAnalyses = new LogAnalyses();
-$logAnalyses->start();
+$logAnalysis = new LogAnalysis();
+$logAnalysis->start();
