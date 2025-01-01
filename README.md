@@ -8,6 +8,7 @@
 ②指定したドメイン名よりドメイン名、総閲覧数を多い順に表示
 
 データベースに保存したWikiPediaLogのURLは以下の通りです。
+
 https://dumps.wikimedia.org/other/pageviews/2021/2021-12/
 
 // データベースに含まれる情報
