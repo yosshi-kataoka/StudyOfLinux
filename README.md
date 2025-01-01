@@ -21,15 +21,21 @@ https://dumps.wikimedia.org/other/pageviews/2021/2021-12/
 
 ##　目次
 1.[インストール]
+
 2.[使用方法]
 
 ##　インストール
+
 下記コマンドにてプロジェクトをpull
+
 git clone https://github.com/yosshi-kataoka/logAnalysisProgram.git
 
 ##　使用方法
+
 logAnalyses/src/src/lib/Main.php
+
 // 上記コマンドにて以下がコマンドラインに表示されます。
+
 wikipediaのログを解析します。
 1または2を入力してください。
 ------------------------------
