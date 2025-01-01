@@ -5,7 +5,7 @@
       <!-- <directory>src/tests/</directory> -->
       <!-- <file>src/tests/ViewCountProcessorTest.php</file> -->
       <file>src/tests/DomainViewProcessorTest.php</file>
-      <!-- <file>src/tests/LogAnalysesTest.php</file> -->
+      <!-- <file>src/tests/LogAnalysisTest.php</file> -->
     </testsuite>
   </testsuites>
 </phpunit>

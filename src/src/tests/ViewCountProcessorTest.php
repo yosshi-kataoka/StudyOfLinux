@@ -3,14 +3,14 @@
 namespace WikiLogs\Tests;
 
 use PHPUnit\Framework\TestCase;
-use WikiLogs\LogAnalyses;
+use WikiLogs\LogAnalysis;
 use WikiLogs\ViewCountProcessor;
 use Dotenv;
 use PDO;
 use ReflectionClass;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
-require_once __DIR__ . '/../lib/LogAnalyses.php';
+require_once __DIR__ . '/../lib/LogAnalysis.php';
 require_once __DIR__ . '/../lib/ViewCountProcessor.php';
 
 class ViewCountProcessorTest extends TestCase
@@ -24,11 +24,11 @@ class ViewCountProcessorTest extends TestCase
     // .envファイルのロード
     $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__) . '/lib');
     $dotenv->load();
-    $logAnalyses = new LogAnalyses();
-    $reflection = new ReflectionClass($logAnalyses);
+    $logAnalysis = new LogAnalysis();
+    $reflection = new ReflectionClass($logAnalysis);
     $method = $reflection->getMethod('connectDb');
     $method->setAccessible(true);
-    $this->pdo = $method->invoke($logAnalyses);
+    $this->pdo = $method->invoke($logAnalysis);
   }
 
   public function testExecute()

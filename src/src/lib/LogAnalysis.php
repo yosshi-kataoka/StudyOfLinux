@@ -14,7 +14,7 @@ require_once __DIR__ . '/Processor.php';
 require_once __DIR__ . '/ViewCountProcessor.php';
 require_once __DIR__ . '/DomainViewProcessor.php';
 
-class LogAnalyses
+class LogAnalysis
 {
   public function start(): bool
   {
